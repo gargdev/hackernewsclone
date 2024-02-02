@@ -38,7 +38,7 @@ async function scrapeAndSaveNews() {
   }
 }
 
-mongoose.connect('mongodb://localhost/hackernews', {
+mongoose.connect('mongodb+srv://anooppandey937:8iw3I2Q4U8I7rWMB@project0.3ritt7o.mongodb.net/', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })

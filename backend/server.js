@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost/hackernews', {
+mongoose.connect('mongodb+srv://anooppandey937:8iw3I2Q4U8I7rWMB@project0.3ritt7o.mongodb.net/', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -22,4 +22,4 @@ app.use('/api/news', require('./routes/news'));
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(PORT, () => console.log("Server started on port ${PORT}"));

@@ -1,25 +1,26 @@
 // components/Signup.js
 
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 import "../styles/login.css";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    password: ''
+    username: "",
+    password: "",
   });
 
   const { username, password } = formData;
 
-  const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/api/auth/signup', {
+      const res = await axios.post("http://localhost:5000/api/auth/signup", {
         username,
-        password
+        password,
       });
       console.log(res.data);
     } catch (err) {
@@ -28,11 +29,28 @@ const Signup = () => {
   };
 
   return (
-    <div className='main'>
-      <h1>Sign Up</h1>
+    <div className="main">
+      <h1 className="text-lg font-extrabold">Sign Up</h1>
       <form onSubmit={onSubmit}>
-        <input className='username' type="text" placeholder="Username" name="username" value={username} onChange={onChange} required />
-        <input className='pass' type="password" placeholder="Password" name="password" value={password} onChange={onChange} minLength="6" required />
+        <input
+          className="username"
+          type="text"
+          placeholder="Username"
+          name="username"
+          value={username}
+          onChange={onChange}
+          required
+        />
+        <input
+          className="pass"
+          type="password"
+          placeholder="Password"
+          name="password"
+          value={password}
+          onChange={onChange}
+          minLength="6"
+          required
+        />
         <button type="submit">Sign Up</button>
       </form>
     </div>

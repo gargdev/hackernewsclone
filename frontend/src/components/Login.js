@@ -18,7 +18,7 @@ const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/auth/login", {
+      const res = await axios.post("http://localhost:5000/api/auth/login", {
         username,
         password,
       });
@@ -29,8 +29,8 @@ const Login = () => {
   };
 
   return (
-    <div className="main">
-      <h1>Login</h1>
+    <div className="main1">
+      <h1 className="text-lg font-extrabold">Login</h1>
       <form onSubmit={onSubmit}>
         <input
           className="username"
