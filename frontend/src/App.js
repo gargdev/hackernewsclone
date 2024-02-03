@@ -25,7 +25,10 @@ const App = () => {
             )}
           </Route>
           <Route path="/dashboard">
-            <Dashboard />
+            <Dashboard
+              setIsAuthenticated={setIsAuthenticated}
+              isAuthenticated={isAuthenticated}
+            />
           </Route>
           <Route path="/signup">
             <Signup />
