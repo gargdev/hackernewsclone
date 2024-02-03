@@ -1,25 +1,38 @@
-// App.js
 import React, { useState } from "react";
-import Signup from "./components/Signup";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
+import Signup from "./components/Signup";
 import "./App.css";
 
 const App = () => {
-  const [token, setToken] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
-    <div className="App">
-      <h1 className="text-4xl font-extrabold mb-10 mt-5">Hacker News Clone</h1>
-      {token ? (
-        <Dashboard token={token} />
-      ) : (
-        <>
-          <Signup />
-          <Login setToken={setToken} />
-        </>
-      )}
-    </div>
+    <Router>
+      <div className="App bg-slate-700 p-96">
+        <Switch>
+          <Route exact path="/">
+            {isAuthenticated ? (
+              <Redirect to="/dashboard" />
+            ) : (
+              <Login setIsAuthenticated={setIsAuthenticated} />
+            )}
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route path="/signup">
+            <Signup />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 };
 
