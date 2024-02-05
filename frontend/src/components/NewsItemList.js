@@ -9,7 +9,7 @@ function NewsItemList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/news")
+      .get("https://hackernewsclonebackend.onrender.com/api/news")
       .then((response) => {
         setNewsItems(response.data);
       })
@@ -20,7 +20,9 @@ function NewsItemList() {
 
   const markAsRead = async (id) => {
     try {
-      await axios.patch(`http://localhost:5000/api/news/${id}/read`);
+      await axios.patch(
+        `https://hackernewsclonebackend.onrender.com/api/news/${id}/read`
+      );
       setNewsItems(
         newsItems.map((item) =>
           item._id === id ? { ...item, read: true } : item
@@ -59,9 +61,10 @@ function NewsItemList() {
             >
               {item.title}
             </a>
-            <div className="flex gap-2">
-              <div className="">{item.upvotes}  Upvotes</div>
-              <div className="">{item.comments}  Comments</div>
+            <div className="flex gap-2 flex-wrap">
+              <div className="">{item.upvotes} Upvotes</div>
+              <div className="">{item.comments} Comments</div>
+              <div className="">{item.postedOn} Posted On</div>
             </div>
             {!item.deleted && (
               <span>

@@ -15,7 +15,7 @@ const LandingPage = ({ isAuthenticated }) => {
   return (
     <div>
       <h1>Welcome to Hacker News Clone</h1>
-      <div className="p-50">
+      <div>
         <Login />
         <Signup />
       </div>
