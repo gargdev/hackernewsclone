@@ -31,17 +31,17 @@ function NewsItemList() {
     }
   };
 
-  const markAsDeleted = async (id) => {
-    try {
-      // Remove the news item from the frontend
-      setNewsItems(newsItems.filter((item) => item._id !== id));
+  // const markAsDeleted = async (id) => {
+  //   try {
+  //     // Remove the news item from the frontend
+  //     setNewsItems(newsItems.filter((item) => item._id !== id));
 
-      // Remove the news item from the backend
-      await axios.delete(`http://localhost:5000/api/news/${id}`);
-    } catch (error) {
-      console.error("Error deleting news item:", error);
-    }
-  };
+  //     // Remove the news item from the backend
+  //     await axios.delete(`http://localhost:5000/api/news/${id}`);
+  //   } catch (error) {
+  //     console.error("Error deleting news item:", error);
+  //   }
+  // };
 
   const deleteNewsItem = (id) => {
     // Update the state to remove the news item without affecting the backend
@@ -59,6 +59,10 @@ function NewsItemList() {
             >
               {item.title}
             </a>
+            <div className="flex gap-2">
+              <div className="">Upvotes- {item.upvotes}</div>
+              <div className="">Comments- {item.comments}</div>
+            </div>
             {!item.deleted && (
               <span>
                 <button
