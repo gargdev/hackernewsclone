@@ -60,8 +60,8 @@ function NewsItemList() {
               {item.title}
             </a>
             <div className="flex gap-2">
-              <div className="">Upvotes- {item.upvotes}</div>
-              <div className="">Comments- {item.comments}</div>
+              <div className="">{item.upvotes}  Upvotes</div>
+              <div className="">{item.comments}  Comments</div>
             </div>
             {!item.deleted && (
               <span>
